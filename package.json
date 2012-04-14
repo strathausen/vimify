@@ -1,0 +1,23 @@
+{
+  "author": "Johann Philipp Strathausen <strathausen@gmail.com> (http://strathausen.eu)",
+  "name": "vimify",
+  "description": "Transform your source code into beautiful css-styled html using your vim!",
+  "version": "0.0.1",
+  "homepage": "http://github.com/strathausen/vimify",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:strathausen/vimify.git"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "engines": {
+    "node": "~0.6.14"
+  },
+  "dependencies": {
+    "async": "~0.1.18",
+    "mocha": "~1.0.1"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {}
+}
