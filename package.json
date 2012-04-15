@@ -4,7 +4,7 @@
   "description": "Transform your source code into beautiful css-styled html using your vim!",
   "version": "0.0.2",
   "homepage": "http://github.com/strathausen/vimify",
-  "keywords":['vim','highlighting','syntax','code'],
+  "keywords":["vim","highlighting","syntax","code"],
   "repository": {
     "type": "git",
     "url": "git@github.com:strathausen/vimify.git"
