@@ -59,5 +59,11 @@ module.exports = vim2html = (text, type, cb) ->
     cb null, style, html
 
 unless module.parent
-  vim2html '@foo "hoo"', 'coffee', (err, style, html) ->
+  text="""
+  vimify = require 'vimify'
+  vimify 'x = (y) -> y', 'coffee', (err, style, html) ->
+    console.log 'the css', style
+    console.log 'the markup', html
+  """
+  vim2html text, 'coffee', (err, style, html) ->
     console.log 'finished', style, html
