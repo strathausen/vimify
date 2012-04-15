@@ -849,3 +849,6 @@ section #title .credits.right {
     display: none;
   }
 }
+.Statement { color: #ffff00; }
+.Constant { color: #ffff00; }
+.Special { color: #ff40ff; }
