@@ -2,46 +2,26 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Vimify by strathausen</title>
+    <title>Vimify</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
   </head>
   <body>
-
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/strathausen/vimify">Fork On GitHub</a></li>
-        </nav>
-      </div><!-- end header -->
 
     <div class="wrapper">
 
       <section>
-        <div id="title">
-          <h1>Vimify</h1>
-          <p>Convert your source code into css styled html using your vim!</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/strathausen">strathausen</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
-        </div>
-
+      <div id="title">
         <h1>vimify</h1>
+        <p>vim-powered code highlighting for node.js</p>
+        <hr/>
+      </div>
 
-<p>Making your source code ready for the internet age! Using fancy html and css,
-directly from your local vim expert!</p>
+      <h1>what?</h1>
 
-<h2>usage</h2>
+      <p>Let vim highlight your code for the web.</p>
+
+      <h2>how?</h2>
+
 
 <pre><code>vimify <span class="Statement">=</span> require <span class="Constant">'vimify'</span>
 vimify <span class="Constant">'x = (y) -&gt; y'</span><span class="Special">,</span> <span class="Constant">'coffee'</span><span class="Special">,</span> <span class="Special">(</span>err<span class="Special">,</span> style<span class="Special">,</span> html<span class="Special">)</span> <span class="Statement">-&gt;</span>
@@ -49,21 +29,14 @@ vimify <span class="Constant">'x = (y) -&gt; y'</span><span class="Special">,</s
   console<span class="Statement">.</span>log <span class="Constant">'the markup'</span><span class="Special">,</span> html
 </code></pre>
 
-<h2>installation</h2>
-<pre><code>npm install vimify</code></pre>
-<h2>todo</h2>
-
-<p>Make the code nicer! Use spawn or something to avoid using temporary files.
-The html parsing is a little bit ugly. All this is just a quick prototype.
-Add more detailed tests.</p>
-
-<h2>author</h2>
-
-<p>Johann Philipp Strathausen <a href="mailto:strathausen@gmail.com">strathausen@gmail.com</a></p>
+      <h2>where?</h2>
+      <pre><code>npm install vimify</code></pre>
       </section>
-
+      <hr>
+      <div id="footer">
+          <span class="credits left">Project maintained by <a href="https://github.com/strathausen">strathausen</a></span> — 
+          <span class="credits right">Original theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+      </div>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
-    
   </body>
 </html>

@@ -849,6 +849,9 @@ section #title .credits.right {
     display: none;
   }
 }
+#footer {
+  text-align: center;
+}
 .Statement { color: #ffff00; }
 .Constant { color: #ffff00; }
 .Special { color: #ff40ff; }
