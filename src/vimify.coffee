@@ -14,7 +14,7 @@ async    = require 'async'
 
 # cb(err, style, html)
 module.exports = vim2html = (text, type, cb) ->
-  unless type.match /^[a-z-_]+$/i
+  unless (type.search /^[a-z-_]+$/i) isnt -1
     return cb new Error 'illegal characters in type'
   tempdir  = process.env.TEMP or '/tmp'
   codeFile = tempdir + '/node-vim2html-' + Math.random()

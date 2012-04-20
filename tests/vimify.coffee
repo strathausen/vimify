@@ -8,3 +8,6 @@ describe 'vimify', ->
       assert.equal typeof style, 'string'
       assert.equal typeof html, 'string'
       do done
+  it 'should crash when using fancy stuff as a file type', ->
+    vimify 'something', ';/', (err) ->
+      assert err
