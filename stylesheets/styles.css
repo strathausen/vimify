@@ -806,28 +806,28 @@ section #title p {
   font-size: 18px;
   text-align: center;
 }
-section #title .credits {
+section #footer .credits {
   font-size: 11px;
   font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   color: #696969;
   margin-top: -10px;
 }
-section #title .credits.left {
+section #footer .credits.left {
   float: left;
 }
-section #title .credits.right {
+section #footer .credits.right {
   float: right;
 }
 
 @media print, screen and (max-width: 720px) {
-  #title .credits {
+  #footer .credits {
     display: block;
     width: 100%;
     line-height: 30px;
     text-align: center;
   }
-  #title .credits .left {
+  #footer .credits .left {
     float: none;
     display: block;
   }
@@ -848,9 +848,6 @@ section #title .credits.right {
   nav {
     display: none;
   }
-}
-#footer {
-  text-align: center;
 }
 .Statement { color: #ffff00; }
 .Constant { color: #ffff00; }
