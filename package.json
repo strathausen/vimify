@@ -7,7 +7,7 @@
   "keywords":["vim","highlighting","syntax","code"],
   "repository": {
     "type": "git",
-    "url": "git@github.com:strathausen/vimify.git"
+    "url": "git@github.com/strathausen/vimify.git"
   },
   "licenses":     [{
     "type":       "MIT",
