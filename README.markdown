@@ -12,9 +12,15 @@ directly from your local vim expert!
 
 ## todo
 
-Make the code nicer! Use spawn or something to avoid using temporary files.
-The html parsing is a little bit ugly. All this is just a quick prototype.
-Add more detailed tests.
+All this is just a quick prototype.
+Here's what I think could be done in the future:
+
+- Make the code more elegant!
+- Use spawn or something to avoid using temporary files.
+- The html parsing is a little bit ugly.
+- Add more detailed tests.
+- Have it work on windows.
+
 
 ## author
 
