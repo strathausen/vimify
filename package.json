@@ -2,7 +2,7 @@
   "author": "Johann Philipp Strathausen <strathausen@gmail.com> (http://strathausen.eu)",
   "name": "vimify",
   "description": "Transform your source code into beautiful css-styled html using your vim!",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "http://strathausen.github.com/vimify",
   "keywords": [
     "vim",

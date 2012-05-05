@@ -38,7 +38,7 @@ module.exports = vim2html = function(text, type, cb) {
     var a, b, html, htmlFile, parts, style;
     htmlFile = _arg.htmlFile;
     if (err) return cb(err);
-    parts = htmlFile.split(/<styletype="text\/css">\n|<\/style>|<pre>\n|<\/pre>\n<\/body>\n<\/html>\n/);
+    parts = htmlFile.split(/<style\stype="text\/css">\n|<\/style>|<pre>\n|<\/pre>\n<\/body>\n<\/html>\n/);
     a = parts[0], style = parts[1], b = parts[2], html = parts[3];
     style = style.replace(/\n(body|pre)[^\n]*/g, '');
     return cb(null, style, html);
