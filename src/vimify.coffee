@@ -15,7 +15,7 @@ fs = require 'fs'
 
 # cb(err, style, html)
 module.exports = vim2html = (text, type, cb) ->
-  unless (type.search /^[a-z-_]+$/i) isnt -1
+  if (type.search /^[a-z-_]+$/i) is -1
     return cb new Error 'illegal characters in type'
   codeFile     = new Tempfile
   htmlFilePath = codeFile.path + '.xhtml'
