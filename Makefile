@@ -1,3 +1,4 @@
+.PHONY: test
 test:
 	node_modules/.bin/mocha -R spec -t 7s \
 	  --compilers coffee:coffee-script \
