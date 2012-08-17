@@ -8,15 +8,18 @@ Bringing vim syntax highlighting to node!
 
 ###
 
-{ exec } = require 'child_process'
+fs       = require 'fs'
+_        = require 'underscore'
 async    = require 'async'
 Tempfile = require 'temporary/lib/file'
-fs = require 'fs'
+{ exec } = require 'child_process'
 
 # cb(err, style, html)
-module.exports = vim2html = (text, type, cb) ->
+module.exports = vim2html = (text, type, options, cb=options) ->
   if (type.search /^[a-z-_]+$/i) is -1
     return cb new Error 'illegal characters in type'
+  options      = [] unless _.isArray options
+  options      = options.map (o) -> '+"' + o + '"'
   codeFile     = new Tempfile
   htmlFilePath = codeFile.path + '.xhtml'
   opts = [
@@ -27,6 +30,7 @@ module.exports = vim2html = (text, type, cb) ->
     '+"let html_use_css=1"'
     '+"let use_xhtml=1"'
     '+"set filetype=' + type + '"'
+    options...
     '+"run! syntax/2html.vim"'
     '+"wq!"'
     '+"q!"'

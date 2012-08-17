@@ -6,24 +6,32 @@ Bringing vim syntax highlighting to node!
 
 @author: Johann Philipp Strathausen <strathausen@gmail.com>
 */
-var Tempfile, async, exec, fs, text, vim2html;
+var Tempfile, async, exec, fs, text, vim2html, _,
+  __slice = Array.prototype.slice;
 
-exec = require('child_process').exec;
+fs = require('fs');
+
+_ = require('underscore');
 
 async = require('async');
 
 Tempfile = require('temporary/lib/file');
 
-fs = require('fs');
+exec = require('child_process').exec;
 
-module.exports = vim2html = function(text, type, cb) {
+module.exports = vim2html = function(text, type, options, cb) {
   var codeFile, htmlFilePath, opts;
+  if (cb == null) cb = options;
   if ((type.search(/^[a-z-_]+$/i)) === -1) {
     return cb(new Error('illegal characters in type'));
   }
+  if (!_.isArray(options)) options = [];
+  options = options.map(function(o) {
+    return '+"' + o + '"';
+  });
   codeFile = new Tempfile;
   htmlFilePath = codeFile.path + '.xhtml';
-  opts = ['-n', '-f', '+"set columns=85 lines=42"', '+"syn on"', '+"let html_use_css=1"', '+"let use_xhtml=1"', '+"set filetype=' + type + '"', '+"run! syntax/2html.vim"', '+"wq!"', '+"q!"', codeFile.path];
+  opts = ['-n', '-f', '+"set columns=85 lines=42"', '+"syn on"', '+"let html_use_css=1"', '+"let use_xhtml=1"', '+"set filetype=' + type + '"'].concat(__slice.call(options), ['+"run! syntax/2html.vim"'], ['+"wq!"'], ['+"q!"'], [codeFile.path]);
   return async.series({
     codeFile: function(cb) {
       return codeFile.writeFile(text, 'utf8', cb);
