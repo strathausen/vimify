@@ -16,20 +16,23 @@ fs = require 'fs'
 # cb(err, style, html)
 module.exports = vim2html = (text, type, cb) ->
   unless (type.search /^[a-z-_]+$/i) isnt -1
-    return cb new Error 'illegal characters in type'
-  codeFile     = new Tempfile
-  htmlFilePath = codeFile.path + '.xhtml'
+    return cb new Error 'illegal characters in vimify file type'
+  codeFile      = new Tempfile
+  htmlFilePath  = codeFile.path + '.html'
   opts = [
-    '-n' # no swap file
-    '-f' # do not detach, wait for session to finish
-    '+"set columns=85 lines=42"'
+    # No swap file
+    '-n'
+    # Do not detach, wait for session to finish
+    '-f'
+    '+"set columns=79"'
     '+"syn on"'
+    # Do not use <font> tags, but css
     '+"let html_use_css=1"'
     '+"let use_xhtml=1"'
     '+"set filetype=' + type + '"'
     '+"run! syntax/2html.vim"'
-    '+"wq!"'
-    '+"q!"'
+    '+"w ' + htmlFilePath + '"'
+    '+"qa!"'
     codeFile.path
   ]
   async.series
@@ -49,15 +52,20 @@ module.exports = vim2html = (text, type, cb) ->
   , (err, { htmlFile }) ->
     return cb err if err
 
-    # vim provides an entire html file, but we only need style and code part
-    parts = htmlFile.split ///
-      <style\stype="text/css">\n|</style>|<pre>\n|</pre>\n</body>\n</html>\n
-    ///
-    [ a, style, b, html ] = parts
-
-    # styling <body> and <pre> is nonsense, we don't want that
-    style = style.replace /\n(body|pre)[^\n]*/g, ''
+    { style, html } = parseHtml htmlFile
     cb null, style, html
+
+module.exports.parseHtml = parseHtml = (rawHtml) ->
+  # vim provides an entire html file, but we only need style and code part
+  parts = rawHtml.split ///
+    <style\stype="text/css">\n|</style>|<pre>\n|</pre>\n</body>\n</html>\n
+  ///
+  [ a, style, b, html ] = parts
+
+  # styling <body> and <pre> is nonsense, we don't want that
+  style = style.replace /\n(body|pre)[^\n]*/g, ''
+
+  { style, html }
 
 unless module.parent
   text = """
@@ -67,4 +75,5 @@ unless module.parent
     console.log 'the markup', html
   """
   vim2html text, 'coffee', (err, style, html) ->
+    console.error err
     console.log 'finished', style, html
