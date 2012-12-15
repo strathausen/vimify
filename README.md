@@ -5,10 +5,13 @@ directly from your local vim expert!
 
 ## usage
 
-    vimify = require 'vimify'
-    vimify 'x = (y) -> y', 'coffee', (err, style, html) ->
-      console.log 'the css', style
-      console.log 'the markup', html
+``` js
+var vimify = require('vimify');
+vimify('x = (y) -> y', 'coffee', function(err, style, html) {
+  console.log('the css', style);
+  console.log('the markup', html);
+});
+```
 
 ## todo
 
