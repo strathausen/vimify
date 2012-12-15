@@ -1,4 +1,5 @@
 assert = require 'assert'
+fs = require 'fs'
 vimify = require '../src/vimify'
 result = {}
 
@@ -20,3 +21,18 @@ describe 'vimify', ->
   it 'should crash when using fancy stuff as a file type', ->
     vimify 'something', ';/', (err) ->
       assert err
+
+  describe 'parser', ->
+    it 'vim 7.2 output', ->
+      rawHtml = fs.readFileSync __dirname + '/out_vim7-2.html', 'utf8'
+      { style, html } = vimify.parseHtml rawHtml
+      assert typeof style, 'string'
+      assert typeof html, 'string'
+      assert.equal style, """
+<!--
+.Statement { color: #f0e68c; font-weight: bold; }
+.Special { color: #ffdead; }
+-->
+
+"""
+      assert.equal html, 'x <span class="Statement">=</span> <span class="Special">(</span>y<span class="Special">)</span> <span class="Statement">-&gt;</span> y\n'
